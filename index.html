@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CJ Store - আপনার অনলাইন শপ</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #ff6b35;
+  --primary-dark: #e55a27;
+  --secondary: #2c3e50;
+  --accent: #f39c12;
+  --bg: #f8f9fa;
+  --white: #ffffff;
+  --text: #2c3e50;
+  --text-light: #6c757d;
+  --border: #e9ecef;
+  --success: #27ae60;
+  --card-shadow: 0 2px 15px rgba(0,0,0,0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Hind Siliguri', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* HEADER */
+header {
+  background: var(--white);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-top {
+  background: var(--secondary);
+  color: white;
+  text-align: center;
+  padding: 6px;
+  font-size: 13px;
+}
+
+.header-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 15px;
+}
+
+.logo {
+  font-family: 'Poppins', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.logo span { color: var(--secondary); }
+
+.search-bar {
+  flex: 1;
+  max-width: 500px;
+  display: flex;
+  border: 2px solid var(--primary);
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 10px 18px;
+  border: none;
+  outline: none;
+  font-family: 'Hind Siliguri', sans-serif;
+  font-size: 14px;
+}
+
+.search-bar button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.2s;
+}
+
+.search-bar button:hover { background: var(--primary-dark); }
+
+.header-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.cart-btn {
+  position: relative;
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: 'Hind Siliguri', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.cart-btn:hover { background: var(--primary-dark); transform: scale(1.02); }
+
+.cart-count {
+  background: white;
+  color: var(--primary);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* NAV */
+nav {
+  background: var(--secondary);
+  padding: 0 20px;
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 5px;
+  overflow-x: auto;
+}
+
+.nav-inner a {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  padding: 12px 16px;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: all 0.2s;
+  border-bottom: 3px solid transparent;
+}
+
+.nav-inner a:hover, .nav-inner a.active {
+  color: white;
+  border-bottom-color: var(--primary);
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, var(--secondary) 0%, #34495e 50%, var(--primary) 100%);
+  color: white;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.hero p { font-size: 18px; opacity: 0.9; margin-bottom: 25px; }
+
+.hero-search {
+  display: flex;
+  max-width: 500px;
+  margin: 0 auto;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+.hero-search input {
+  flex: 1;
+  padding: 15px 22px;
+  border: none;
+  outline: none;
+  font-family: 'Hind Siliguri', sans-serif;
+  font-size: 15px;
+}
+
+.hero-search button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 15px 28px;
+  cursor: pointer;
+  font-family: 'Hind Siliguri', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.hero-search button:hover { background: var(--primary-dark); }
+
+/* MAIN */
+main { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+/* CATEGORIES */
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 25px 0 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: var(--border);
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.cat-card {
+  background: white;
+  border-radius: 12px;
+  padding: 15px 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: var(--card-shadow);
+  border: 2px solid transparent;
+}
+
+.cat-card:hover, .cat-card.active {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.cat-card .icon { font-size: 28px; margin-bottom: 6px; }
+.cat-card .name { font-size: 12px; font-weight: 600; color: var(--text); }
+
+/* PRODUCTS */
+.products-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.sort-select {
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: 'Hind Siliguri', sans-serif;
+  font-size: 13px;
+  outline: none;
+  cursor: pointer;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.product-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.product-img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+}
+
+.product-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--primary);
+  color: white;
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.product-info { padding: 12px; }
+
+.product-name {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.price-main {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.price-old {
+  font-size: 13px;
+  color: var(--text-light);
+  text-decoration: line-through;
+}
+
+.add-to-cart {
+  width: 100%;
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 9px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Hind Siliguri', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.add-to-cart:hover { background: var(--primary-dark); }
+
+/* LOADING */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  flex-direction: column;
+  gap: 15px;
+  color: var(--text-light);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* CART MODAL */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 2000;
+  display: flex;
+  justify-content: flex-end;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.cart-panel {
+  background: white;
+  width: 380px;
+  max-width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding: 25px;
+  transform: translateX(100%);
+  transition: transform 0.3s;
+}
+
+.modal-overlay.open .cart-panel { transform: translateX(0); }
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--border);
+}
+
+.cart-header h2 { font-size: 20px; font-weight: 700; }
+
+.close-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.cart-item-img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  flex-shrink: 0;
+}
+
+.cart-item-info { flex: 1; }
+.cart-item-name { font-size: 13px; font-weight: 600; margin-bottom: 5px; }
+.cart-item-price { font-size: 15px; font-weight: 700; color: var(--primary); }
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.qty-btn {
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.qty-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+
+.cart-footer {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 2px solid var(--border);
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.checkout-btn {
+  width: 100%;
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  font-family: 'Hind Siliguri', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.checkout-btn:hover { background: var(--primary-dark); }
+
+.empty-cart {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-light);
+}
+
+.empty-cart .icon { font-size: 60px; margin-bottom: 15px; }
+
+/* PRODUCT MODAL */
+.product-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.product-modal.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.product-modal-inner {
+  background: white;
+  border-radius: 16px;
+  max-width: 700px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 25px;
+  transform: scale(0.9);
+  transition: transform 0.3s;
+}
+
+.product-modal.open .product-modal-inner { transform: scale(1); }
+
+.modal-img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: #f8f8f8;
+  margin-bottom: 20px;
+}
+
+/* TOAST */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--success);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  z-index: 9999;
+  transform: translateY(100px);
+  transition: transform 0.3s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.toast.show { transform: translateY(0); }
+
+/* PAGINATION */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 30px 0;
+}
+
+.page-btn {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  font-family: 'Hind Siliguri', sans-serif;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.page-btn:hover, .page-btn.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+/* FOOTER */
+footer {
+  background: var(--secondary);
+  color: rgba(255,255,255,0.8);
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 40px;
+}
+
+footer a { color: var(--primary); text-decoration: none; }
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .header-main { flex-wrap: wrap; }
+  .search-bar { order: 3; max-width: 100%; width: 100%; }
+  .hero h1 { font-size: 24px; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .cart-panel { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-top">🚚 বিনামূল্যে ডেলিভারি | দ্রুত শিপিং | ১০০% নিরাপদ পেমেন্ট</div>
+  <div class="header-main">
+    <a href="#" class="logo">CJ<span>Store</span></a>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="পণ্য খুঁজুন..." />
+      <button onclick="searchProducts()">🔍</button>
+    </div>
+    <div class="header-actions">
+      <button class="cart-btn" onclick="openCart()">
+        🛒 কার্ট <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </div>
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="active" onclick="filterCategory('')">সব পণ্য</a>
+      <a href="#" onclick="filterCategory('phone')">📱 ফোন</a>
+      <a href="#" onclick="filterCategory('fashion')">👗 ফ্যাশন</a>
+      <a href="#" onclick="filterCategory('beauty')">💄 বিউটি</a>
+      <a href="#" onclick="filterCategory('home')">🏠 হোম</a>
+      <a href="#" onclick="filterCategory('sports')">⚽ স্পোর্টস</a>
+      <a href="#" onclick="filterCategory('toys')">🎮 খেলনা</a>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>🛍️ স্বাগতম CJ Store-এ!</h1>
+  <p>হাজারো পণ্য, সেরা দাম, দ্রুত ডেলিভারি</p>
+  <div class="hero-search">
+    <input type="text" id="heroSearch" placeholder="কী খুঁজছেন? যেমন: phone case, watch..." />
+    <button onclick="heroSearch()">খুঁজুন</button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main>
+  <!-- CATEGORIES -->
+  <div class="section-title">📦 ক্যাটাগরি</div>
+  <div class="categories-grid">
+    <div class="cat-card" onclick="filterCategory('')">
+      <div class="icon">🛒</div>
+      <div class="name">সব</div>
+    </div>
+    <div class="cat-card" onclick="filterCategory('phone')">
+      <div class="icon">📱</div>
+      <div class="name">ফোন</div>
+    </div>
+    <div class="cat-card" onclick="filterCategory('fashion')">
+      <div class="icon">👗</div>
+      <div class="name">ফ্যাশন</div>
+    </div>
+    <div class="cat-card" onclick="filterCategory('beauty')">
+      <div class="icon">💄</div>
+      <div class="name">বিউটি</div>
+    </div>
+    <div class="cat-card" onclick="filterCategory('home')">
+      <div class="icon">🏠</div>
+      <div class="name">হোম</div>
+    </div>
+    <div class="cat-card" onclick="filterCategory('sports')">
+      <div class="icon">⚽</div>
+      <div class="name">স্পোর্টস</div>
+    </div>
+    <div class="cat-card" onclick="filterCategory('watch')">
+      <div class="icon">⌚</div>
+      <div class="name">ঘড়ি</div>
+    </div>
+    <div class="cat-card" onclick="filterCategory('toys')">
+      <div class="icon">🎮</div>
+      <div class="name">খেলনা</div>
+    </div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <div class="products-header">
+    <div class="section-title" style="margin:0">🔥 জনপ্রিয় পণ্য</div>
+    <select class="sort-select" onchange="sortProducts(this.value)">
+      <option value="">সাজান</option>
+      <option value="price_low">দাম: কম থেকে বেশি</option>
+      <option value="price_high">দাম: বেশি থেকে কম</option>
+    </select>
+  </div>
+
+  <div id="productsContainer">
+    <div class="loading">
+      <div class="spinner"></div>
+      <p>পণ্য লোড হচ্ছে...</p>
+    </div>
+  </div>
+
+  <div class="pagination" id="pagination"></div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 CJ Store | Powered by CJDropshipping</p>
+  <p style="margin-top:8px; font-size:13px;">
+    <a href="#">যোগাযোগ</a> | <a href="#">রিটার্ন পলিসি</a> | <a href="#">শিপিং তথ্য</a>
+  </p>
+</footer>
+
+<!-- CART MODAL -->
+<div class="modal-overlay" id="cartModal">
+  <div class="cart-panel">
+    <div class="cart-header">
+      <h2>🛒 আমার কার্ট</h2>
+      <button class="close-btn" onclick="closeCart()">✕</button>
+    </div>
+    <div id="cartItems"></div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-total">
+        <span>মোট:</span>
+        <span id="cartTotal">৳0</span>
+      </div>
+      <button class="checkout-btn" onclick="checkout()">অর্ডার করুন →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT DETAIL MODAL -->
+<div class="product-modal" id="productModal">
+  <div class="product-modal-inner">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px">
+      <h2 id="modalTitle" style="font-size:18px; font-weight:700"></h2>
+      <button class="close-btn" onclick="closeProductModal()">✕</button>
+    </div>
+    <img id="modalImg" class="modal-img" src="" alt="" onerror="this.style.display='none'" />
+    <p id="modalPrice" style="font-size:24px; font-weight:700; color:var(--primary); margin-bottom:10px"></p>
+    <p id="modalDesc" style="font-size:14px; color:var(--text-light); line-height:1.7; margin-bottom:20px"></p>
+    <button id="modalAddBtn" class="checkout-btn" style="max-width:250px">কার্টে যোগ করুন 🛒</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+const API_KEY = 'CJ5297560@api@41fa9f9208644b21a0178b3862a7076d';
+let cart = JSON.parse(localStorage.getItem('cjCart') || '[]');
+let allProducts = [];
+let currentPage = 1;
+let currentKeyword = 'popular';
+let accessToken = '';
+
+// Get CJ Access Token
+async function getToken() {
+  try {
+    const res = await fetch('https://developers.cjdropshipping.com/api2.0/v1/authentication/getAccessToken', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ apiKey: API_KEY })
+    });
+    const data = await res.json();
+    if (data.result) {
+      accessToken = data.data.accessToken;
+      return true;
+    }
+  } catch(e) {}
+  return false;
+}
+
+// Load Products from CJ API
+async function loadProducts(keyword = '', page = 1) {
+  const container = document.getElementById('productsContainer');
+  container.innerHTML = '<div class="loading"><div class="spinner"></div><p>পণ্য লোড হচ্ছে...</p></div>';
+
+  if (!accessToken) {
+    const ok = await getToken();
+    if (!ok) {
+      showDemoProducts();
+      return;
+    }
+  }
+
+  try {
+    const params = new URLSearchParams({
+      productNameEn: keyword || 'fashion',
+      pageNum: page,
+      pageSize: 20
+    });
+
+    const res = await fetch(`https://developers.cjdropshipping.com/api2.0/v1/product/list?${params}`, {
+      headers: { 'CJ-Access-Token': accessToken }
+    });
+
+    const data = await res.json();
+
+    if (data.result && data.data && data.data.list && data.data.list.length > 0) {
+      allProducts = data.data.list;
+      renderProducts(allProducts);
+      renderPagination(data.data.total, page);
+    } else {
+      showDemoProducts();
+    }
+  } catch(e) {
+    showDemoProducts();
+  }
+}
+
+// Demo products fallback
+function showDemoProducts() {
+  const demos = [
+    { pid: 'd1', productNameEn: 'স্মার্টফোন কেস (iPhone)', productImage: '', sellPrice: 299, originalPrice: 599, categoryName: 'Electronics' },
+    { pid: 'd2', productNameEn: 'ওয়্যারলেস ব্লুটুথ হেডফোন', productImage: '', sellPrice: 1299, originalPrice: 2500, categoryName: 'Electronics' },
+    { pid: 'd3', productNameEn: 'মহিলা ফ্যাশন হ্যান্ডব্যাগ', productImage: '', sellPrice: 899, originalPrice: 1800, categoryName: 'Fashion' },
+    { pid: 'd4', productNameEn: 'স্মার্ট ওয়াচ (ফিটনেস ট্র্যাকার)', productImage: '', sellPrice: 1599, originalPrice: 3200, categoryName: 'Electronics' },
+    { pid: 'd5', productNameEn: 'LED ফেসিয়াল মাস্ক (বিউটি)', productImage: '', sellPrice: 799, originalPrice: 1500, categoryName: 'Beauty' },
+    { pid: 'd6', productNameEn: 'পোর্টেবল পাওয়ার ব্যাংক 20000mAh', productImage: '', sellPrice: 699, originalPrice: 1400, categoryName: 'Electronics' },
+    { pid: 'd7', productNameEn: 'শিশুদের শিক্ষামূলক খেলনা সেট', productImage: '', sellPrice: 549, originalPrice: 1100, categoryName: 'Toys' },
+    { pid: 'd8', productNameEn: 'কিচেন অর্গানাইজার সেট', productImage: '', sellPrice: 449, originalPrice: 900, categoryName: 'Home' },
+    { pid: 'd9', productNameEn: 'যোগব্যায়াম ম্যাট (এক্সট্রা থিক)', productImage: '', sellPrice: 599, originalPrice: 1200, categoryName: 'Sports' },
+    { pid: 'd10', productNameEn: 'মিনি ওয়্যারলেস চার্জার প্যাড', productImage: '', sellPrice: 399, originalPrice: 800, categoryName: 'Electronics' },
+    { pid: 'd11', productNameEn: 'ফ্যাশন সানগ্লাস (UV প্রোটেকশন)', productImage: '', sellPrice: 349, originalPrice: 700, categoryName: 'Fashion' },
+    { pid: 'd12', productNameEn: 'ভিটামিন সি ফেস সিরাম', productImage: '', sellPrice: 499, originalPrice: 1000, categoryName: 'Beauty' },
+  ];
+  const emojis = { Electronics: '📱', Fashion: '👗', Beauty: '💄', Home: '🏠', Sports: '⚽', Toys: '🎮' };
+  allProducts = demos.map(d => ({ ...d, emoji: emojis[d.categoryName] || '📦' }));
+  renderProducts(allProducts);
+  document.getElementById('pagination').innerHTML = '';
+}
+
+function renderProducts(products) {
+  const container = document.getElementById('productsContainer');
+  if (!products.length) {
+    container.innerHTML = '<div class="loading"><p>কোনো পণ্য পাওয়া যায়নি</p></div>';
+    return;
+  }
+
+  const emojis = ['📱','👗','💄','🏠','⚽','🎮','⌚','👟','🎒','🖥️','🍳','🌺'];
+
+  container.innerHTML = `<div class="products-grid">${products.map((p, i) => {
+    const price = p.sellPrice || p.productPrice || Math.floor(Math.random() * 1500 + 200);
+    const oldPrice = Math.floor(price * 1.8);
+    const discount = Math.round((1 - price/oldPrice) * 100);
+    const emoji = p.emoji || emojis[i % emojis.length];
+    const imgHtml = p.productImage
+      ? `<img src="${p.productImage}" alt="${p.productNameEn}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.innerHTML='<span style=\\'font-size:40px\\'>${emoji}</span>'">`
+      : `<span style="font-size:40px">${emoji}</span>`;
+
+    return `
+    <div class="product-card" onclick="openProduct(${JSON.stringify(p).replace(/"/g,'&quot;')})">
+      <div class="product-img">${imgHtml}</div>
+      <div class="product-badge">-${discount}%</div>
+      <div class="product-info">
+        <div class="product-name">${p.productNameEn || 'পণ্যের নাম'}</div>
+        <div class="product-price">
+          <span class="price-main">৳${price}</span>
+          <span class="price-old">৳${oldPrice}</span>
+        </div>
+        <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(${JSON.stringify(p).replace(/"/g,'&quot;')})">
+          🛒 কার্টে যোগ করুন
+        </button>
+      </div>
+    </div>`;
+  }).join('')}</div>`;
+}
+
+function renderPagination(total, current) {
+  const pages = Math.ceil(total / 20);
+  if (pages <= 1) { document.getElementById('pagination').innerHTML = ''; return; }
+  const btns = [];
+  for (let i = 1; i <= Math.min(pages, 8); i++) {
+    btns.push(`<button class="page-btn ${i===current?'active':''}" onclick="goPage(${i})">${i}</button>`);
+  }
+  document.getElementById('pagination').innerHTML = btns.join('');
+}
+
+function goPage(p) {
+  currentPage = p;
+  loadProducts(currentKeyword, p);
+  window.scrollTo(0, 0);
+}
+
+// SEARCH
+function searchProducts() {
+  currentKeyword = document.getElementById('searchInput').value || 'popular';
+  currentPage = 1;
+  loadProducts(currentKeyword, 1);
+}
+
+function heroSearch() {
+  const kw = document.getElementById('heroSearch').value;
+  if (kw) {
+    document.getElementById('searchInput').value = kw;
+    currentKeyword = kw;
+    loadProducts(kw, 1);
+    window.scrollTo(0, 400);
+  }
+}
+
+function filterCategory(cat) {
+  currentKeyword = cat || 'popular';
+  currentPage = 1;
+  loadProducts(currentKeyword, 1);
+  document.querySelectorAll('.nav-inner a').forEach(a => a.classList.remove('active'));
+}
+
+function sortProducts(val) {
+  let sorted = [...allProducts];
+  if (val === 'price_low') sorted.sort((a,b) => (a.sellPrice||0) - (b.sellPrice||0));
+  if (val === 'price_high') sorted.sort((a,b) => (b.sellPrice||0) - (a.sellPrice||0));
+  renderProducts(sorted);
+}
+
+// CART
+function addToCart(product) {
+  const price = product.sellPrice || product.productPrice || 500;
+  const existing = cart.find(i => i.pid === product.pid);
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({ ...product, qty: 1, price });
+  }
+  saveCart();
+  updateCartCount();
+  showToast('✅ কার্টে যোগ হয়েছে!');
+}
+
+function saveCart() {
+  localStorage.setItem('cjCart', JSON.stringify(cart));
+}
+
+function updateCartCount() {
+  const total = cart.reduce((s, i) => s + i.qty, 0);
+  document.getElementById('cartCount').textContent = total;
+}
+
+function openCart() {
+  document.getElementById('cartModal').classList.add('open');
+  renderCartItems();
+}
+
+function closeCart() {
+  document.getElementById('cartModal').classList.remove('open');
+}
+
+function renderCartItems() {
+  const container = document.getElementById('cartItems');
+  const footer = document.getElementById('cartFooter');
+
+  if (!cart.length) {
+    container.innerHTML = '<div class="empty-cart"><div class="icon">🛒</div><p>কার্ট খালি আছে</p></div>';
+    footer.style.display = 'none';
+    return;
+  }
+
+  footer.style.display = 'block';
+  const emojis = ['📱','👗','💄','🏠','⚽','🎮','⌚'];
+
+  container.innerHTML = cart.map((item, idx) => `
+    <div class="cart-item">
+      <div class="cart-item-img">
+        ${item.productImage
+          ? `<img src="${item.productImage}" style="width:70px;height:70px;object-fit:cover;border-radius:8px" onerror="this.parentElement.innerHTML='${emojis[idx%emojis.length]}'">`
+          : emojis[idx % emojis.length]}
+      </div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.productNameEn}</div>
+        <div class="cart-item-price">৳${item.price}</div>
+        <div class="qty-controls">
+          <button class="qty-btn" onclick="changeQty(${idx}, -1)">−</button>
+          <span>${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty(${idx}, 1)">+</button>
+          <button class="qty-btn" onclick="removeItem(${idx})" style="margin-left:auto; color:red">🗑</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  document.getElementById('cartTotal').textContent = '৳' + total;
+}
+
+function changeQty(idx, delta) {
+  cart[idx].qty += delta;
+  if (cart[idx].qty <= 0) cart.splice(idx, 1);
+  saveCart();
+  updateCartCount();
+  renderCartItems();
+}
+
+function removeItem(idx) {
+  cart.splice(idx, 1);
+  saveCart();
+  updateCartCount();
+  renderCartItems();
+}
+
+function checkout() {
+  if (!cart.length) return;
+  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  alert(`🎉 অর্ডার নিশ্চিত!\n\nমোট: ৳${total}\n\nআপনার অর্ডার প্রক্রিয়া করা হচ্ছে।\n(Payment gateway শীঘ্রই যোগ হবে)`);
+  cart = [];
+  saveCart();
+  updateCartCount();
+  closeCart();
+}
+
+// PRODUCT DETAIL
+function openProduct(product) {
+  const price = product.sellPrice || product.productPrice || 500;
+  document.getElementById('modalTitle').textContent = product.productNameEn;
+  document.getElementById('modalImg').src = product.productImage || '';
+  document.getElementById('modalPrice').textContent = '৳' + price;
+  document.getElementById('modalDesc').textContent = product.productNameEn + ' - উচ্চমানের পণ্য। CJDropshipping থেকে সরাসরি আমদানিকৃত। দ্রুত শিপিং, ১০০% অরিজিনাল।';
+  document.getElementById('modalAddBtn').onclick = () => { addToCart(product); closeProductModal(); };
+  document.getElementById('productModal').classList.add('open');
+}
+
+function closeProductModal() {
+  document.getElementById('productModal').classList.remove('open');
+}
+
+// TOAST
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// Close modals on overlay click
+document.getElementById('cartModal').addEventListener('click', function(e) {
+  if (e.target === this) closeCart();
+});
+document.getElementById('productModal').addEventListener('click', function(e) {
+  if (e.target === this) closeProductModal();
+});
+
+// Search on Enter
+document.getElementById('searchInput').addEventListener('keypress', e => { if (e.key === 'Enter') searchProducts(); });
+document.getElementById('heroSearch').addEventListener('keypress', e => { if (e.key === 'Enter') heroSearch(); });
+
+// INIT
+updateCartCount();
+loadProducts('fashion', 1);
+</script>
+</body>
+</html>
