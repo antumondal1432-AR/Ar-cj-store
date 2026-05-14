@@ -1,1 +1,235 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CJ Store - আপনার অনলাইন শপ</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #ff6b35;
+  --primary-dark: #e55a27;
+  --secondary: #2c3e50;
+  --bg: #f8f9fa;
+  --white: #ffffff;
+  --text: #2c3e50;
+  --text-light: #6c757d;
+  --border: #e9ecef;
+  --success: #27ae60;
+  --card-shadow: 0 2px 15px rgba(0,0,0,0.08);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Hind Siliguri', sans-serif; background: var(--bg); color: var(--text); }
 
+header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+.header-top { background: var(--secondary); color: white; text-align: center; padding: 6px; font-size: 13px; }
+.header-main { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; max-width: 1200px; margin: 0 auto; gap: 12px; flex-wrap: wrap; }
+.logo { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; color: var(--primary); text-decoration: none; }
+.logo span { color: var(--secondary); }
+.search-bar { flex: 1; min-width: 200px; display: flex; border: 2px solid var(--primary); border-radius: 25px; overflow: hidden; }
+.search-bar input { flex: 1; padding: 9px 16px; border: none; outline: none; font-family: 'Hind Siliguri', sans-serif; font-size: 14px; }
+.search-bar button { background: var(--primary); color: white; border: none; padding: 9px 18px; cursor: pointer; font-size: 15px; }
+.cart-btn { background: var(--primary); color: white; border: none; padding: 10px 18px; border-radius: 25px; cursor: pointer; font-family: 'Hind Siliguri', sans-serif; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.cart-count { background: white; color: var(--primary); border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+
+nav { background: var(--secondary); padding: 0 16px; }
+.nav-inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+.nav-inner::-webkit-scrollbar { display: none; }
+.nav-inner a { color: rgba(255,255,255,0.85); text-decoration: none; padding: 11px 14px; font-size: 13px; white-space: nowrap; border-bottom: 3px solid transparent; display: block; }
+.nav-inner a:hover, .nav-inner a.active { color: white; border-bottom-color: var(--primary); }
+
+.hero { background: linear-gradient(135deg, #1a252f 0%, #2c3e50 50%, #c0392b 100%); color: white; padding: 40px 20px; text-align: center; }
+.hero h1 { font-size: 30px; font-weight: 700; margin-bottom: 10px; }
+.hero p { font-size: 16px; opacity: 0.9; margin-bottom: 22px; }
+.hero-search { display: flex; max-width: 480px; margin: 0 auto; border-radius: 30px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.3); }
+.hero-search input { flex: 1; padding: 14px 20px; border: none; outline: none; font-family: 'Hind Siliguri', sans-serif; font-size: 14px; }
+.hero-search button { background: var(--primary); color: white; border: none; padding: 14px 24px; cursor: pointer; font-family: 'Hind Siliguri', sans-serif; font-size: 14px; font-weight: 600; }
+
+main { max-width: 1200px; margin: 0 auto; padding: 16px; }
+.section-title { font-size: 20px; font-weight: 700; margin: 20px 0 12px; display: flex; align-items: center; gap: 8px; }
+.section-title::after { content: ''; flex: 1; height: 2px; background: var(--border); }
+
+.categories-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 10px; margin-bottom: 20px; }
+.cat-card { background: white; border-radius: 12px; padding: 10px 8px; text-align: center; cursor: pointer; transition: all 0.2s; box-shadow: var(--card-shadow); border: 2px solid transparent; }
+.cat-card:hover, .cat-card.active { border-color: var(--primary); transform: translateY(-2px); }
+.cat-icon { width: 52px; height: 52px; border-radius: 50%; margin: 0 auto 6px; overflow: hidden; background: #f0f0f0; }
+.cat-icon img { width: 100%; height: 100%; object-fit: cover; }
+.cat-card .name { font-size: 11px; font-weight: 600; color: var(--text); }
+
+.products-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.sort-select { padding: 7px 12px; border: 1px solid var(--border); border-radius: 8px; font-family: 'Hind Siliguri', sans-serif; font-size: 13px; outline: none; }
+
+.products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+@media(min-width:600px){ .products-grid { grid-template-columns: repeat(3,1fr); } }
+@media(min-width:900px){ .products-grid { grid-template-columns: repeat(4,1fr); } }
+
+.product-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: var(--card-shadow); transition: all 0.3s; cursor: pointer; position: relative; }
+.product-card:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+.product-img-wrap { width: 100%; aspect-ratio: 1; overflow: hidden; background: #f5f5f5; position: relative; }
+.product-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; display: block; }
+.product-card:hover .product-img-wrap img { transform: scale(1.05); }
+.product-badge { position: absolute; top: 8px; left: 8px; background: var(--primary); color: white; padding: 3px 8px; border-radius: 5px; font-size: 11px; font-weight: 700; z-index: 1; }
+.product-info { padding: 10px; }
+.product-name { font-size: 12px; font-weight: 600; line-height: 1.4; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 34px; }
+.product-price { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
+.price-main { font-size: 16px; font-weight: 700; color: var(--primary); }
+.price-old { font-size: 12px; color: var(--text-light); text-decoration: line-through; }
+.add-to-cart { width: 100%; background: var(--primary); color: white; border: none; padding: 8px; border-radius: 8px; cursor: pointer; font-family: 'Hind Siliguri', sans-serif; font-size: 12px; font-weight: 600; transition: background 0.2s; }
+.add-to-cart:hover { background: var(--primary-dark); }
+
+.loading { display: flex; justify-content: center; align-items: center; min-height: 150px; color: var(--text-light); }
+
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 2000; display: flex; justify-content: flex-end; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.cart-panel { background: white; width: 360px; max-width: 100%; height: 100%; overflow-y: auto; padding: 20px; transform: translateX(100%); transition: transform 0.3s; }
+.modal-overlay.open .cart-panel { transform: translateX(0); }
+.cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 2px solid var(--border); }
+.cart-header h2 { font-size: 18px; font-weight: 700; }
+.close-btn { background: none; border: 1px solid var(--border); border-radius: 50%; width: 30px; height: 30px; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; }
+.cart-item { display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.cart-item-img { width: 65px; height: 65px; border-radius: 8px; overflow: hidden; background: #f5f5f5; flex-shrink: 0; }
+.cart-item-img img { width: 100%; height: 100%; object-fit: cover; }
+.cart-item-info { flex: 1; }
+.cart-item-name { font-size: 12px; font-weight: 600; margin-bottom: 4px; }
+.cart-item-price { font-size: 14px; font-weight: 700; color: var(--primary); }
+.qty-controls { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+.qty-btn { width: 24px; height: 24px; border: 1px solid var(--border); border-radius: 5px; background: white; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center; }
+.qty-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+.cart-footer { margin-top: 18px; padding-top: 12px; border-top: 2px solid var(--border); }
+.cart-total { display: flex; justify-content: space-between; font-size: 17px; font-weight: 700; margin-bottom: 14px; }
+.checkout-btn { width: 100%; background: var(--primary); color: white; border: none; padding: 13px; border-radius: 10px; font-family: 'Hind Siliguri', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; }
+.checkout-btn:hover { background: var(--primary-dark); }
+.empty-cart { text-align: center; padding: 40px 20px; color: var(--text-light); }
+
+.product-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 3000; display: flex; align-items: center; justify-content: center; padding: 16px; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+.product-modal.open { opacity: 1; pointer-events: all; }
+.product-modal-inner { background: white; border-radius: 16px; max-width: 480px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 20px; transform: scale(0.9); transition: transform 0.3s; }
+.product-modal.open .product-modal-inner { transform: scale(1); }
+.modal-img { width: 100%; height: 260px; object-fit: cover; border-radius: 10px; background: #f8f8f8; margin-bottom: 16px; display: block; }
+
+.toast { position: fixed; bottom: 20px; right: 20px; background: var(--success); color: white; padding: 12px 20px; border-radius: 10px; font-weight: 600; font-size: 14px; z-index: 9999; transform: translateY(100px); transition: transform 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.2); max-width: 280px; }
+.toast.show { transform: translateY(0); }
+
+footer { background: var(--secondary); color: rgba(255,255,255,0.8); text-align: center; padding: 25px 20px; margin-top: 30px; }
+footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">🚚 বিনামূল্যে ডেলিভারি | দ্রুত শিপিং | ১০০% নিরাপদ পেমেন্ট</div>
+  <div class="header-main">
+    <a href="#" class="logo">CJ<span>Store</span></a>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="পণ্য খুঁজুন..." onkeypress="if(event.key==='Enter')doSearch()" />
+      <button onclick="doSearch()">🔍</button>
+    </div>
+    <button class="cart-btn" onclick="openCart()">
+      🛒 কার্ট <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="active" onclick="event.preventDefault();filterCat('all',this)">সব পণ্য</a>
+      <a href="#" onclick="event.preventDefault();filterCat('phone',this)">📱 ফোন</a>
+      <a href="#" onclick="event.preventDefault();filterCat('fashion',this)">👗 ফ্যাশন</a>
+      <a href="#" onclick="event.preventDefault();filterCat('beauty',this)">💄 বিউটি</a>
+      <a href="#" onclick="event.preventDefault();filterCat('home',this)">🏠 হোম</a>
+      <a href="#" onclick="event.preventDefault();filterCat('sports',this)">⚽ স্পোর্টস</a>
+      <a href="#" onclick="event.preventDefault();filterCat('watch',this)">⌚ ঘড়ি</a>
+      <a href="#" onclick="event.preventDefault();filterCat('toys',this)">🎮 খেলনা</a>
+    </div>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>🛍️ স্বাগতম CJ Store-এ!</h1>
+  <p>হাজারো পণ্য, সেরা দাম, দ্রুত ডেলিভারি</p>
+  <div class="hero-search">
+    <input type="text" id="heroSearch" placeholder="কী খুঁজছেন? যেমন: watch, bag..." onkeypress="if(event.key==='Enter')doHeroSearch()" />
+    <button onclick="doHeroSearch()">খুঁজুন</button>
+  </div>
+</div>
+
+<main>
+  <div class="section-title">📦 ক্যাটাগরি</div>
+  <div class="categories-grid" id="catGrid"></div>
+  <div class="products-header">
+    <div class="section-title" style="margin:0">🔥 জনপ্রিয় পণ্য</div>
+    <select class="sort-select" onchange="sortProducts(this.value)">
+      <option value="">সাজান</option>
+      <option value="low">দাম: কম থেকে বেশি</option>
+      <option value="high">দাম: বেশি থেকে কম</option>
+    </select>
+  </div>
+  <div id="productsContainer"><div class="loading">পণ্য লোড হচ্ছে...</div></div>
+</main>
+
+<footer>
+  <p>© 2026 CJ Store | Powered by CJDropshipping</p>
+  <p style="margin-top:8px;font-size:13px"><a href="#">যোগাযোগ</a> | <a href="#">রিটার্ন পলিসি</a> | <a href="#">শিপিং তথ্য</a></p>
+</footer>
+
+<div class="modal-overlay" id="cartModal" onclick="if(event.target===this)closeCart()">
+  <div class="cart-panel">
+    <div class="cart-header">
+      <h2>🛒 আমার কার্ট</h2>
+      <button class="close-btn" onclick="closeCart()">✕</button>
+    </div>
+    <div id="cartItems"></div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-total"><span>মোট:</span><span id="cartTotal">৳0</span></div>
+      <button class="checkout-btn" onclick="checkout()">অর্ডার করুন →</button>
+    </div>
+  </div>
+</div>
+
+<div class="product-modal" id="productModal" onclick="if(event.target===this)closeProductModal()">
+  <div class="product-modal-inner">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <h2 id="modalTitle" style="font-size:15px;font-weight:700;flex:1;margin-right:10px"></h2>
+      <button class="close-btn" onclick="closeProductModal()">✕</button>
+    </div>
+    <img id="modalImg" class="modal-img" src="" alt="" />
+    <p id="modalPrice" style="font-size:22px;font-weight:700;color:var(--primary);margin-bottom:8px"></p>
+    <p id="modalDesc" style="font-size:13px;color:var(--text-light);line-height:1.7;margin-bottom:16px"></p>
+    <button id="modalAddBtn" class="checkout-btn" style="max-width:220px">কার্টে যোগ করুন 🛒</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const PRODUCTS = [
+  {id:1,name:'স্মার্টফোন কেস ট্রান্সপারেন্ট (iPhone 15)',cat:'phone',price:299,old:599,img:'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=400&q=80',desc:'উচ্চমানের ট্রান্সপারেন্ট কেস। শক প্রতিরোধী, হালকা ও টেকসই।'},
+  {id:2,name:'ওয়্যারলেস ব্লুটুথ ইয়ারবাড TWS Pro',cat:'phone',price:1299,old:2500,img:'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400&q=80',desc:'৩০ ঘণ্টা ব্যাটারি, নয়েজ ক্যান্সেলিং, IPX5 ওয়াটারপ্রুফ।'},
+  {id:3,name:'পোর্টেবল পাওয়ার ব্যাংক ২০০০০mAh',cat:'phone',price:699,old:1400,img:'https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=400&q=80',desc:'দ্রুত চার্জিং, দুটি USB পোর্ট, LED ইন্ডিকেটর।'},
+  {id:4,name:'ওয়্যারলেস চার্জার প্যাড ১৫W',cat:'phone',price:399,old:800,img:'https://images.unsplash.com/photo-1614624532983-4ce03382d63d?w=400&q=80',desc:'সব Qi সাপোর্টেড ফোনে কাজ করে। অতি পাতলা ডিজাইন।'},
+  {id:5,name:'মহিলা ফ্যাশন হ্যান্ডব্যাগ লেদার লুক',cat:'fashion',price:899,old:1800,img:'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&q=80',desc:'প্রিমিয়াম PU লেদার, বড় কম্পার্টমেন্ট, স্টাইলিশ ডিজাইন।'},
+  {id:6,name:'পুরুষ ক্যাজুয়াল স্নিকার্স ট্রেন্ডি',cat:'fashion',price:1199,old:2400,img:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80',desc:'আরামদায়ক সোল, হালকা ওজন, সব সিজনে পরার উপযোগী।'},
+  {id:7,name:'ফ্যাশন সানগ্লাস UV400 প্রোটেকশন',cat:'fashion',price:349,old:700,img:'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&q=80',desc:'১০০% UV সুরক্ষা, পোলারাইজড লেন্স, হালকা ফ্রেম।'},
+  {id:8,name:'মহিলা সামার ড্রেস ফুলের ডিজাইন',cat:'fashion',price:799,old:1600,img:'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&q=80',desc:'নরম কটন মিক্স কাপড়, ফুলের ডিজাইন, সব সাইজে পাওয়া যায়।'},
+  {id:9,name:'ভিটামিন সি ফেস সিরাম গ্লোয়িং স্কিন',cat:'beauty',price:499,old:1000,img:'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&q=80',desc:'ত্বক উজ্জ্বল করে, দাগ দূর করে, ময়েশ্চারাইজিং ফর্মুলা।'},
+  {id:10,name:'LED ফেসিয়াল মাস্ক স্কিন কেয়ার',cat:'beauty',price:1599,old:3200,img:'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&q=80',desc:'৭ রঙের LED লাইট থেরাপি, বাড়িতে বসেই স্যালন ট্রিটমেন্ট।'},
+  {id:11,name:'মেকআপ ব্রাশ সেট ১২ পিস',cat:'beauty',price:599,old:1200,img:'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400&q=80',desc:'সফট সিন্থেটিক ব্রিস্টল, ভেগান ফ্রেন্ডলি, সুন্দর কেস সহ।'},
+  {id:12,name:'সিরামিক হেয়ার কার্লার প্রো',cat:'beauty',price:1099,old:2200,img:'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=80',desc:'সিরামিক কোটিং, দ্রুত গরম হয়, চুলের ক্ষতি করে না।'},
+  {id:13,name:'কিচেন অর্গানাইজার সেট ৫ পিস',cat:'home',price:449,old:900,img:'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80',desc:'স্টেইনলেস স্টিল, রাস্ট প্রুফ, রান্নাঘর গুছিয়ে রাখুন।'},
+  {id:14,name:'RGB LED স্ট্রিপ লাইট ৫মিটার',cat:'home',price:299,old:600,img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80',desc:'RGB কালার চেঞ্জিং, রিমোট কন্ট্রোল, সেলফ-অ্যাডহেসিভ।'},
+  {id:15,name:'USB পোর্টেবল মিনি ফ্যান',cat:'home',price:349,old:700,img:'https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?w=400&q=80',desc:'৩ স্পিড সেটিং, শান্ত অপারেশন, ভ্রমণের জন্য পারফেক্ট।'},
+  {id:16,name:'ডিজিটাল কিচেন স্কেল ৫ কেজি',cat:'home',price:399,old:800,img:'https://images.unsplash.com/photo-1588776813677-77aaf5595b83?w=400&q=80',desc:'০.১গ্রাম নির্ভুলতা, LCD ডিসপ্লে, ব্যাকলিট স্ক্রিন।'},
+  {id:17,name:'যোগব্যায়াম ম্যাট এক্সট্রা থিক ৮মিমি',cat:'sports',price:599,old:1200,img:'https://images.unsplash.com/photo-1601925228008-603bf64c8e5f?w=400&q=80',desc:'নন-স্লিপ সারফেস, ইকো-ফ্রেন্ডলি, ক্যারি স্ট্র্যাপ সহ।'},
+  {id:18,name:'স্মার্ট ফিটনেস ব্যান্ড হার্টরেট মনিটর',cat:'sports',price:1499,old:3000,img:'https://images.unsplash.com/photo-1575311373937-040b8e1fd6b0?w=400&q=80',desc:'হার্ট রেট, ক্যালোরি, স্টেপ কাউন্ট, স্লিপ ট্র্যাকিং।'},
+  {id:19,name:'রেজিস্ট্যান্স ব্যান্ড সেট ৫ লেভেল',cat:'sports',price:399,old:800,img:'https://images.unsplash.com/photo-1598289431512-b97b0917affc?w=400&q=80',desc:'৫টি ভিন্ন রেজিস্ট্যান্স লেভেল, ঘরে ব্যায়ামের জন্য আদর্শ।'},
+  {id:20,name:'স্পোর্টস ওয়াটার বোতল ১ লিটার',cat:'sports',price:249,old:500,img:'https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400&q=80',desc:'BPA ফ্রি, লিক-প্রুফ, তাপ ধরে রাখে ১২ ঘণ্টা।'},
+  {id:21,name:'স্মার্ট ওয়াচ ফুল টাচ স্ক্রিন',cat:'watch',price:1599,old:3200,img:'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80',desc:'BP মনিটর, ঘুম ট্র্যাকিং, ১৪ দিনের ব্যাটারি, IP68।'},
+  {id:22,name:'ক্লাসিক অ্যানালগ ওয়াচ পুরুষ',cat:'watch',price:999,old:2000,img:'https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=400&q=80',desc:'স্টেইনলেস স্টিল কেস, সাপফায়ার গ্লাস, জাপানি মুভমেন্ট।'},
+  {id:23,name:'মহিলা ফ্যাশন ওয়াচ রোজ গোল্ড',cat:'watch',price:799,old:1600,img:'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=400&q=80',desc:'রোজ গোল্ড ফিনিশ, ক্রিস্টাল ডায়াল, চামড়ার ব্যান্ড।'},
+  {id:24,name:'স্পোর্টস ডিজিটাল ওয়াচ ক্রোনোগ্রাফ',cat:'watch',price:699,old:1400,img:'https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?w=400&q=80',desc:'স্টপওয়াচ, অ্যালার্ম, ব্যাকলাইট, ১০০মি ওয়াটারপ্রুফ।'},
+  {id:25,name:'শিশুদের লেগো ব্লক সেট ১০০+ পিস',cat:'toys',price:549,old:1100,img:'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=400&q=80',desc:'রঙিন ও নিরাপদ উপাদান, সৃজনশীলতা বাড়ায়।'},
+  {id:26,name:'RC রেসিং কার রিমোট কন্ট্রোল',cat:'toys',price:899,old:1800,img:'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=400&q=80',desc:'৩০+ কিমি/ঘণ্টা গতি, ৪WD, LED হেডলাইট।'},
+  {id:27,name:'মিনি ড্রোন শিশুদের জন্য',cat:'toys',price:1199,old:2400,img:'https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=400&q=80',desc:'সহজ নিয়ন্ত্রণ, অটো-হোভার, ৩৬০ ফ্লিপ, LED।'},
+  {id:28,name:'ব্লুটুথ মোবাইল গেমিং কন্ট্রোলার',cat:'toys',price:699,old:1400,img:'https://images.unsplash.com/photo-1617096200347-cb04ae810b1d?w=400&q=80',desc:'সব স্মার্টফোনে কাজ করে, ৮ ঘণ্টা ব্যাটারি।'},
+];
+
+const CATS = [
+  {id:'all',name:'সব পণ্য',i
